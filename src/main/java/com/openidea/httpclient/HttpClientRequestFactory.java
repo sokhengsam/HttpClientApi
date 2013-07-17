@@ -1,4 +1,5 @@
 package com.openidea.httpclient;
+import java.io.IOException;
 import java.net.URI;
 
 
@@ -12,6 +13,6 @@ import java.net.URI;
  */
 public interface HttpClientRequestFactory {
 
-	HttpClientRequest createRequest(URI uri,HttpMethod method);
+	HttpClientRequest createRequest(URI uri,HttpMethod method) throws IOException;
 	
 }

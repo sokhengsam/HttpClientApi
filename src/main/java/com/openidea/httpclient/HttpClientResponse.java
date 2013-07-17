@@ -3,6 +3,7 @@
  */
 package com.openidea.httpclient;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -11,9 +12,9 @@ import java.io.InputStream;
  */
 public interface HttpClientResponse extends HttpMessage {
 
-	HttpStatus getStatusCode();
+	HttpStatus getStatusCode() throws IOException;
 	
-	InputStream getBody();
+	InputStream getBody() throws IOException;
 	
 	void close();
 	

@@ -1,0 +1,39 @@
+/**
+ * 
+ */
+package com.openidea.httpclient;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+/**
+ * @author sokheng
+ *
+ */
+public class SimpleHttpClientTest {
+
+	/**
+	 * @param args
+	 * @throws URISyntaxException 
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws URISyntaxException, IOException {
+	
+		URI uri = new URI("http://feeds.bbci.co.uk/news/rss.xml");
+		
+		HttpClientRequestFactory httpClientRequestFactory = new SimpleHttpClientRequestFactory();
+		HttpClientRequest httpClientRequest = httpClientRequestFactory.createRequest(uri, HttpMethod.GET);
+		HttpClientResponse httpClientResponse = httpClientRequest.execute();
+		
+		InputStreamReader inputStreamReader = new InputStreamReader(httpClientResponse.getBody());
+		BufferedReader bufferReader = new BufferedReader(inputStreamReader);
+		String line;
+		while((line = bufferReader.readLine()) != null){
+			System.out.println(line);
+		}
+	}
+
+}

@@ -3,6 +3,7 @@
  */
 package com.openidea.httpclient;
 
+import java.io.IOException;
 import java.io.OutputStream;
 
 /**
@@ -13,6 +14,6 @@ public interface HttpClientRequest extends HttpMessage {
 	
 	OutputStream getBody();
 	
-	HttpClientResponse execute();
+	HttpClientResponse execute() throws IOException;
 	
 }

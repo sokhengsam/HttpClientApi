@@ -4,13 +4,16 @@
 package com.openidea.httpclient;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 
 /**
  * @author sokheng
  *
  */
-public abstract class BufferingHttpClientRequest implements HttpClientRequest {
+public abstract class AbstractBufferingHttpClientRequest implements HttpClientRequest {
+	
+	private HttpHeader headers = new HttpHeader();
 	
 	private ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
@@ -19,8 +22,7 @@ public abstract class BufferingHttpClientRequest implements HttpClientRequest {
 	 */
 	@Override
 	public HttpHeader getHttpHeader() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.headers;
 	}
 
 	/* (non-Javadoc)
@@ -28,7 +30,6 @@ public abstract class BufferingHttpClientRequest implements HttpClientRequest {
 	 */
 	@Override
 	public OutputStream getBody() {
-		// TODO Auto-generated method stub
 		return buffer;
 	}
 
@@ -36,11 +37,12 @@ public abstract class BufferingHttpClientRequest implements HttpClientRequest {
 	 * @see com.openidea.httpclient.HttpClientRequest#execute()
 	 */
 	@Override
-	public HttpClientResponse execute() {
+	public HttpClientResponse execute() throws IOException {
 		// TODO Auto-generated method stub
-		return null;
+		HttpClientResponse httpCiClientResponse = executeClientRequest(getHttpHeader(),getBody());
+		return httpCiClientResponse;
 	}
 	
-	public abstract HttpClientResponse executeClientRequest();
+	public abstract HttpClientResponse executeClientRequest(HttpHeader header,OutputStream buffer) throws IOException;
 
 }
