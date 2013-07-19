@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
  * @author sokheng
  *
  */
-public class SimpleHttpClientTest {
+public class HttpCommonHttpClientTest {
 
 	/**
 	 * @param args
@@ -22,9 +22,9 @@ public class SimpleHttpClientTest {
 	 */
 	public static void main(String[] args) throws URISyntaxException, IOException {
 	
-		URI uri = new URI("http://feeds.bbci.co.uk/news/business/rss.xml");
+		URI uri = new URI("http://feeds.bbci.co.uk/news/technology/rss.xml");
 		
-		HttpClientRequestFactory httpClientRequestFactory = new SimpleHttpClientRequestFactory();
+		HttpClientRequestFactory httpClientRequestFactory = new HttpCommonHttpClientRequestFactory();
 		HttpClientRequest httpClientRequest = httpClientRequestFactory.createRequest(uri, HttpMethod.GET);
 		HttpClientResponse httpClientResponse = httpClientRequest.execute();
 		
