@@ -20,8 +20,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.params.CoreConnectionPNames;
 
-import com.sun.net.httpserver.HttpPrincipal;
-
 /**
  * @author sokheng
  *
